@@ -1,4 +1,4 @@
-# 🌟 Modern Resume Generator
+# 🌟 Jake Resume Generator
 
 A sleek, dark-themed resume generator with dynamic placeholders and multiple export options. Built with HTML, CSS, and JavaScript.
 
