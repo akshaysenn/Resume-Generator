@@ -104,7 +104,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## 📧 Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
+Your Name - [@Akshay Sain](https://www.linkedin.com/in/akshaysenn/)
 
 Project Link: [https://github.com/akshaysenn/resume-generator](https://github.com/akshaysenn/Resume-Generator)
 
