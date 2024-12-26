@@ -1,0 +1,344 @@
+/* Dark theme colors */
+:root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent-blue: #4a9eff;
+    --accent-green: #4cd964;
+    --accent-red: #ff4a4a;
+    --border-color: #404040;
+    --input-bg: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-primary);
+    padding: 20px;
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px var(--shadow-color);
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 1px solid var(--border-color);
+    z-index: 1;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+    text-shadow: 0 0 10px var(--accent-blue);
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.form-group {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input, textarea {
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    z-index: 1;
+    position: relative;
+}
+
+input:focus, textarea:focus {
+    transform: translateX(5px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    color: var(--text-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #2b2b2b, #3a3a3a);
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    transform: scale(0);
+    transition: transform 0.3s ease-out;
+}
+
+button:hover::after {
+    transform: scale(1);
+}
+
+.education-entry, .experience-entry, .skills-entry {
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: var(--bg-secondary);
+    z-index: 1;
+}
+
+.education-entry:hover, 
+.experience-entry:hover, 
+.skills-entry:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 20px var(--shadow-color);
+    border-color: var(--accent-blue);
+}
+
+.generate-btn, .preview-btn, .pdf-btn {
+    animation: none;
+    background-size: 200% 200%;
+    transition: all 0.3s ease, background-position 0.5s ease-out;
+}
+
+.generate-btn {
+    background-image: linear-gradient(45deg, var(--accent-blue), #2d6bff);
+}
+
+.preview-btn {
+    background-image: linear-gradient(45deg, var(--accent-green), #37a34a);
+}
+
+.pdf-btn {
+    background-image: linear-gradient(45deg, var(--accent-red), #d63031);
+}
+
+.remove-btn {
+    background-image: linear-gradient(45deg, var(--accent-red), #d63031);
+}
+
+.preview-container {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    position: relative;
+    z-index: 1;
+}
+
+.preview-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 30px var(--shadow-color);
+}
+
+/* Loading spinner */
+#loading {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#loading::after {
+    border: 5px solid var(--border-color);
+    border-top: 5px solid var(--accent-blue);
+    box-shadow: 0 0 20px var(--accent-blue);
+}
+
+/* Neon text effect for buttons */
+.generate-btn:hover, 
+.preview-btn:hover, 
+.pdf-btn:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        0 0 20px rgba(74, 158, 255, 0.4),
+        0 0 40px rgba(74, 158, 255, 0.2),
+        inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient border effect */
+.container::before,
+.education-entry::before,
+.experience-entry::before,
+.skills-entry::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.education-entry:hover::before,
+.experience-entry:hover::before,
+.skills-entry:hover::before {
+    opacity: 1;
+}
+
+/* Dark theme scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
+
+/* Keep the preview content light themed for better readability */
+.preview-content * {
+    color: black !important;
+}
+
+/* Animation keyframes with dark theme colors */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px);
+        box-shadow: 0 0 0 var(--shadow-color);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+        box-shadow: 0 0 20px var(--shadow-color);
+    }
+}
+
+@keyframes slideIn {
+    from { 
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to { 
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .preview-content {
+        box-shadow: none;
+    }
+} 
+
+/* Add these styles for placeholder animations */
+@keyframes fadeInOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    20% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    30% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+input::placeholder,
+textarea::placeholder {
+    transition: opacity 0.3s ease;
+}
+
+input.placeholder-animating::placeholder,
+textarea.placeholder-animating::placeholder {
+    animation: fadeInOut 3s ease;
+}
+
+/* Update input styles to better show placeholder text */
+input, textarea {
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    z-index: 1;
+    position: relative;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+    opacity: 0.5;
+} 

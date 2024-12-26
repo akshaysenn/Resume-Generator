@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Generator</h1>
+        <form id="resumeForm">
+            <!-- Personal Information -->
+            <section>
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="tel" id="phone" placeholder="Phone" required>
+                    <input type="text" id="location" placeholder="Location" required>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section>
+                <h2>Education</h2>
+                <div id="educationFields">
+                    <div class="education-entry">
+                        <input type="text" placeholder="University Name" class="university" required>
+                        <input type="text" placeholder="Degree" class="degree" required>
+                        <input type="text" placeholder="Year" class="year" required>
+                        <input type="text" placeholder="GPA" class="gpa" required>
+                        <button type="button" class="remove-btn" onclick="removeEducation(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" onclick="addEducation()">Add Education</button>
+            </section>
+
+            <!-- Experience -->
+            <section>
+                <h2>Experience</h2>
+                <div id="experienceFields">
+                    <div class="experience-entry">
+                        <input type="text" placeholder="Company Name" class="company" required>
+                        <input type="text" placeholder="Position" class="position" required>
+                        <input type="text" placeholder="Duration" class="duration" required>
+                        <textarea placeholder="Description" class="description" required></textarea>
+                        <button type="button" class="remove-btn" onclick="removeExperience(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" onclick="addExperience()">Add Experience</button>
+            </section>
+
+            <!-- Skills -->
+            <section>
+                <h2>Skills</h2>
+                <div id="skillsFields">
+                    <div class="skills-entry">
+                        <input type="text" placeholder="Skill Category" class="skill-category" required>
+                        <input type="text" placeholder="Skills (comma separated)" class="skills" required>
+                        <button type="button" class="remove-btn" onclick="removeSkills(this)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" onclick="addSkills()">Add Skills</button>
+            </section>
+
+            <div class="button-group">
+                <button type="submit" class="generate-btn">Generate LaTeX</button>
+                <button type="button" class="preview-btn" onclick="previewResume()">Preview Resume</button>
+                <button type="button" class="pdf-btn" onclick="downloadPDF()">Download PDF</button>
+            </div>
+        </form>
+        
+        <div id="preview" class="preview-container" style="display: none;">
+            <h2>Preview</h2>
+            <div id="previewContent" class="preview-content"></div>
+        </div>
+    </div>
+    <div id="loading" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
+            <h3>Generating PDF...</h3>
+            <p>Please wait</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
